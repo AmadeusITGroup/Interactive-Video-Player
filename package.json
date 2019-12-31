@@ -88,7 +88,7 @@
     "typescript": "^3.1.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.4.1",
-    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^2.0.13",
     "webpack-manifest-plugin": "^2.0.4",
     "webpack-md5-hash": "0.0.6",
