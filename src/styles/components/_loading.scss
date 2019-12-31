@@ -1,0 +1,33 @@
+.loading {
+  .loading-bar {
+    display: inline-block;
+    width: 4px;
+    height: 12px;
+    border-radius: 4px;
+    animation: loading 1s ease-in-out infinite;
+    &:nth-child(1) {
+      animation-delay: 0;
+      @include themify($themes) {
+        background-color: transparentize(themed('loading-color'), 0.4);
+      }
+    }
+    &:nth-child(2) {
+      animation-delay: 0.09s;
+      @include themify($themes) {
+        background-color: transparentize(themed('loading-color'), 0.3);
+      }
+    }
+    &:nth-child(3) {
+      animation-delay: .18s;
+      @include themify($themes) {
+        background-color: transparentize(themed('loading-color'), 0.2);
+      }
+    }
+    &:nth-child(4) {
+      animation-delay: .27s;
+      @include themify($themes) {
+        background-color: transparentize(themed('loading-color'), 0.1);
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+$holidaypirates : (
+  text-color: #666,
+
+  primary:white,
+  primary-text-color:white,
+  primary-hover:#4Fc3f7,
+  gradient-left:#ffe259,
+  gradient-right:#f29a01,
+  gradient-direction: to bottom,
+
+  emphasis: rgba(106, 52, 96, 1),
+
+  player-bar-bg: rgba(106, 52, 96, 0.85),
+  player-track-height:0.5em,
+  player-big-play-height: 1.5em,
+  player-marker-color: white,
+  player-active-marker-color: #6a3460,
+  player-progress-color: #f29a01,
+  player-big-play-bg-color: rgba(106, 52, 96, 1),
+  player-explore-cursor : url("https://storage.googleapis.com/travelcast/images/cross-%locale%.png%time%") 17.5 17.5,
+
+  overlay-small-dim-opacity: 1,
+
+  poi-bg:rgba(106, 52, 96, 0.85),
+  poi-color:white,
+  poi-text-align:left,
+  poi-text-shadow : none,
+  poi-transform : none,
+  poi-top : 0px,
+  poi-right : 0px,
+  poi-bottom : auto,
+  poi-left : 0px,
+  poi-height : 50px,
+  poi-padding :  0 50px 0 50px,
+  poi-shadow-dimension : 0px,
+  poi-shadow-bg:transparent,
+  poi-shadow-transform : rotate(2.5deg),
+  poi-icon-offset : 0px,
+
+  default-location: url(https://storage.googleapis.com/travelcast/images/pin-alternate.svg) no-repeat 50% 50%,
+
+  loading-indicator : url(https://storage.googleapis.com/travelcast/images/holidaypirates.svg),
+  loading-color :rgba(106, 52, 96, 1),
+
+  watermark: url(https://storage.googleapis.com/travelcast/images/logo-holidaypirates.svg) no-repeat center,
+  watermark-display : block,
+  watermark-width: 125px,
+  watermark-height: calc(125px * 0.2781),
+  watermark-margin : 0 10px 0 0,
+
+  map-marker-fill: #6a3460,
+  map-marker-stroke: #fff
+);

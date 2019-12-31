@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Amadeus video solutions</title>
+  <link rel="stylesheet" href="amadeus-video-player.2d27f45782ebb5d33f4e.css?124ec135d98b3cfcc15d">
+  <style>
+    body {
+      padding : 5%;
+      text-align: center;
+    }
+    .video-wrapper {
+      margin: 0 auto;
+      position: relative !important;
+      padding-bottom: 56.25% !important;
+      height: 0 !important;
+    }
+    .video-wrapper > div {
+      position: absolute;
+      top: 0; 
+      left: 0; 
+      width: 100%;
+      height: 100%;
+    }
+    p {
+      text-align: justify;
+      padding : 2% 0;
+    }
+
+    video {width : 100%;}
+  </style>
+</head>
+
+<body>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean laoreet porta interdum. Ut et consectetur turpis, sollicitudin euismod neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec purus diam, malesuada eu nulla nec, volutpat mollis odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris non justo molestie, volutpat felis finibus, ullamcorper sapien. In suscipit augue in velit pharetra, non eleifend lectus ultrices. Nunc arcu magna, dapibus at augue ut, ultricies scelerisque lectus. Sed egestas, dui sed commodo aliquam, massa tortor varius eros, sed sodales tellus massa sollicitudin lectus. Aliquam sodales turpis eget dapibus rhoncus. Vestibulum malesuada lorem in diam rutrum semper. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam id ipsum interdum, ullamcorper diam nec, molestie erat. Nunc quis nunc id turpis gravida molestie. Morbi scelerisque, erat quis imperdiet elementum, libero purus vestibulum orci, ut tincidunt sapien sapien non velit. Maecenas id tristique sem, id pellentesque nibh.
+    </p>
+  <div class="video-wrapper">
+    <div id="player1"></div>
+  </div>
+
+  <p>ed et felis eget lorem hendrerit imperdiet. Pellentesque rhoncus id eros blandit scelerisque. Quisque at nisi non nisl euismod rhoncus a ut tortor. Suspendisse id ex scelerisque, porttitor erat id, blandit risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed in vulputate neque. Sed pretium sodales orci ac dictum. Vestibulum nibh purus, gravida in urna eu, auctor ullamcorper sapien. Nullam nec odio in ligula interdum tempus eget sed tortor. Ut diam elit, ultricies quis hendrerit ac, hendrerit a neque.</p>
+ 
+  <div class="video-wrapper">
+    <div id="player2"></div>
+  </div>
+
+  <p>ed et felis eget lorem hendrerit imperdiet. Pellentesque rhoncus id eros blandit scelerisque. Quisque at nisi non nisl euismod rhoncus a ut tortor. Suspendisse id ex scelerisque, porttitor erat id, blandit risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed in vulputate neque. Sed pretium sodales orci ac dictum. Vestibulum nibh purus, gravida in urna eu, auctor ullamcorper sapien. Nullam nec odio in ligula interdum tempus eget sed tortor. Ut diam elit, ultricies quis hendrerit ac, hendrerit a neque.</p>
+ 
+  <div class="video-wrapper">
+    <div id="player3">
+      <video poster="https://storage.googleapis.com/travelcast-pictures/PRODUCTION/599408d5b360d300017a32c8.png" controls data-debug data-skin="xmas">
+        <source src="https://player.vimeo.com/external/229822737.m3u8?s=2935ea3e37a721a2b123f384b2778382a7089bba&oauth2_token_id=982834104" data-label="Auto" data-res="Infinity"/>
+        <source src="https://player.vimeo.com/external/229822737.hd.mp4?s=819e47f19c3be40fde5ac5d2c8b452d4f5d2165c&profile_id=174&oauth2_token_id=982834104" data-label="1080p <small>HD</small>" data-res="1080"/>
+      </video>
+    </div>
+  </div>
+
+  <script>
+    function initPlayers () {
+      //Retrieve a video stored on amadeus video solutions
+      window.player1 = new AmadeusVideoPlayer('div#player1', {
+        videoID : '5bed8b86958df200013c983a',
+        skin : 'xmas',
+        defaultCaption : 'en',
+        hotkeys : true
+      });
+      //Load an arbitrary video
+      window.player2 = new AmadeusVideoPlayer('div#player2', {
+        poster : "https://storage.googleapis.com/travelcast-pictures/PRODUCTION/599408d5b360d300017a32c8.png",
+        autoplay : true,
+        debug : true,
+        source: {
+          src: "https://player.vimeo.com/external/229822737.m3u8?s=2935ea3e37a721a2b123f384b2778382a7089bba&oauth2_token_id=982834104",
+          type: "application/x-mpegURL"
+        },
+        pois: [
+          {
+            poi_name: "Island",
+            place_id: "ChIJw-3c7rl01kgRcWDSMKIskew",
+            start_time: 1
+          }
+        ],
+        controls : ['CurrentTimeDisplay', 'TimeDivider', 'DurationDisplay', 'FullscreenToggle', 'BrandButton'],
+        skin : "xmas"
+      });
+      //Load from node configuration
+      window.player3 = new AmadeusVideoPlayer('div#player3');
+    }
+  </script>
+  <script async defer src="amadeus-video-player.min.124ec135d98b3cfcc15d.js?124ec135d98b3cfcc15d"
+      onload="this.onload=function(){};initPlayers()" 
+      onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1080 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>avs</title>
+<style>
+body { background-color: #eeeeee; padding: 0; margin: 5px; overflow-y: scroll; }
+#HTMLReporter h1 { font-size: 12px; font-weight: normal; text-align: right; margin: 10px 0 10px 0 !important; }
+#HTMLReporter { font-size: 11px; font-family: Monaco, "Lucida Console", monospace; line-height: 14px; color: #333333; }
+#HTMLReporter a { text-decoration: none; }
+#HTMLReporter a:hover { text-decoration: underline; }
+#HTMLReporter p, #HTMLReporter h1, #HTMLReporter h2, #HTMLReporter h3, #HTMLReporter h4, #HTMLReporter h5, #HTMLReporter h6 { margin: 0; line-height: 14px; }
+#HTMLReporter .banner, #HTMLReporter .symbolSummary, #HTMLReporter .summary, #HTMLReporter .resultMessage, #HTMLReporter .specDetail .description, #HTMLReporter .alert .bar, #HTMLReporter .stackTrace { padding-left: 9px; padding-right: 9px; }
+
+#HTMLReporter #jasmine_content { position: fixed; right: 100%; }
+#HTMLReporter .version { color: #aaaaaa; }
+#HTMLReporter .banner { margin-top: 14px; }
+#HTMLReporter .duration { color: #aaaaaa; float: right; }
+#HTMLReporter .exceptions { color: #fff; float: right; margin-top: 5px; margin-right: 5px; }
+#HTMLReporter .bar { line-height: 28px; font-size: 14px; display: block; color: #eee; }
+#HTMLReporter .runningAlert { background-color: #666666; }
+#HTMLReporter .skippedAlert { background-color: #aaaaaa; }
+#HTMLReporter .skippedAlert:first-child { background-color: #333333; }
+#HTMLReporter .skippedAlert:hover { text-decoration: none; color: white; text-decoration: underline; }
+#HTMLReporter .passingAlert { background-color: #a6b779; }
+#HTMLReporter .passingAlert:first-child { background-color: #5e7d00; }
+#HTMLReporter .failingAlert { background-color: #cf867e; }
+#HTMLReporter .failingAlert:first-child { background-color: #b03911; }
+#HTMLReporter .results { margin-top: 14px; }
+#HTMLReporter #details { display: none; }
+#HTMLReporter .resultsMenu { color: #999; background-color: #fff; }
+
+#HTMLReporter .summaryMenuItem { font-weight: normal; text-decoration: none; margin-right: 5px; color: #333; }
+#HTMLReporter .detailsMenuItem { font-weight: normal; text-decoration: none; margin-left: 5px; color: #999; }
+
+#HTMLReporter.showDetails .summaryMenuItem { color: #999; }
+#HTMLReporter.showDetails .detailsMenuItem { color: #333; }
+#HTMLReporter.showDetails .summaryMenuItem:hover { text-decoration: underline; }
+#HTMLReporter             .detailsMenuItem:hover { text-decoration: underline; }
+
+
+#HTMLReporter.showDetails .summary { display: none; }
+#HTMLReporter.showDetails #details { display: block; }
+#HTMLReporter .summary { margin-top: 14px; margin-bottom: 40px; }
+#HTMLReporter .summary .suite .suite, #HTMLReporter .summary .specSummary { margin-left: 14px; }
+#HTMLReporter .summary .specSummary.passed { color: #5e7d00; }
+#HTMLReporter .summary .specSummary.failed { color: #b03911; }
+#HTMLReporter .summary .specSummary.skipped { color: #ba9d37; }
+#HTMLReporter .description + .suite { margin-top: 0; }
+#HTMLReporter .suite { margin-top: 14px; }
+#HTMLReporter .suite a { color: #333333; }
+#HTMLReporter #details .specDetail { margin-bottom: 28px; }
+#HTMLReporter #details .specDetail .description { display: block; color: white; background-color: #b03911; }
+#HTMLReporter .resultMessage { padding-top: 14px; color: #333333; }
+#HTMLReporter .resultMessage span.result { display: block; }
+#HTMLReporter .stackTrace { margin: 5px 0 0 0; max-height: 224px; overflow: auto; 
+    line-height: 18px; color: #666666; border: 1px solid #ddd; background: white; white-space: pre; }
+
+
+.fold-buttons { float: right; }
+.fold-buttons a { color: #fff; font-size: 12px; }
+.fold-buttons { display: none } 
+#HTMLReporter .br { margin-top: 8px; }
+#HTMLReporter .section-starter { font-size: 14px; line-height: 18px }
+#HTMLReporter .summary-section { 
+  cursor: -webkit-zoom-out; cursor: -moz-zoom-out; cursor: zoom-out; 
+  background: #fafafa; 
+  padding: 10px; 
+  border-bottom: #eaeaea 1px solid; }
+#HTMLReporter .summary-section.folded { 
+  cursor: -webkit-zoom-in; cursor: -moz-zoom-in; cursor: zoom-in; 
+  padding-bottom: 8px;
+}
+#HTMLReporter .summary-section.folded div { display: none }
+#HTMLReporter .summary-section.folded div.section-starter { display: block }
+/*#HTMLReporter .summary-section:hover { background: #e9e9e9; }*/
+#HTMLReporter .summary-section:hover { background: #f5f5f5; }
+#HTMLReporter .summary-section-totals { 
+  font-size: 11px;
+  display: none; 
+  margin-left: 11px; 
+  overflow: hidden; 
+  position: relative;
+  top: -1px; 
+}
+#HTMLReporter .summary-section.folded .summary-section-totals { display: inline; }
+#HTMLReporter .summary-section-total { color: #fff; vertical-align: baseline; padding: 1px 8px; }
+#HTMLReporter .summary-section-total.passed { background: #5e7d00;  }
+#HTMLReporter .summary-section-total.failed { background: #b03911;  }
+#HTMLReporter .summary-section-total.skipped { background: #ba9d37;  }
+
+#HTMLReporter { font-size: 12px; line-height: 18px; } /*larget font-size*/
+
+</style>
+</head>
+
+<body id="HTMLReporter" class="html-reporter showDetails">
+<h1>Tested in Chrome 79.0.3945 (Mac OS X 10.13.6) on Tue Dec 31 2019</h1>
+
+<div class="alert">
+
+
+<!-- <span class="failingAlert bar">Failed 2 specs</span> -->
+<span class="failingAlert bar"><span class="fold-buttons"><a href="#" onclick="fold();">Fold</a> | 
+  <a href="#" onclick="unfold();">Unfold</a></span>173 specs, 2 failed, 0 pending</span>
+<span class="resultsMenu bar">
+<a class="summaryMenuItem" onclick="showSummary();" href="#">Spec List<a>|<a 
+   class="detailsMenuItem" onclick="showFailures();" href="#">Failures</a>
+</span>
+
+
+
+</div>
+<div class="results">
+  <div class="summary">
+  
+  
+  
+  
+  
+    <div class="suite passed">
+      <span class="description">Flight tag in edit mode</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should display live data warning</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Flight tag in view mode</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should display loading while fetching data</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display error when failing</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display flight data once fetched</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display localisation message when location service fails</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Template</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should request photo when no configuration</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should coplete even if place call fails</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should use cached value when provided</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should respect configuration value</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Template Large tag</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should display title, tips, small map, hotel, contact info and cta for template type Hotel</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display title, tips, flight, budget and cta for template type destination</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display title, tips, small map, tour, contact info and cta for template type tour</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display tips</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should fallback to pre-defined messages when no data</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display poi name</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should use default cta label when none is specified</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display cta when cta_url is specified</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Template Small tag</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should use default cta label when none is specified</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display cta when cta_url is specified</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display photos, title, hotel and cta for template type tour</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display poi name</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should fallback to pre-defined messages when no data</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display tips</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display photos, title, flight and cta for template type destination</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display photos, title, hotel and cta for template type hotel</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite failed">
+      <span class="description">Event service </span>
+    
+      <div class="specSummary passed">
+      <span class="description">should update dimensions</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should update dimensions for additional trackers</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should allow the addition of an array of GA tracking code</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should only allow strings as GA tracking code</span>
+      </div>
+    
+      <div class="specSummary failed">
+      <span class="description">should initiialize with environment data</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should only allow dimension keys</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not send event when not initialized</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should allow the addition of a single GA tracking code</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not send event when diasabled</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should return null for unknow tracking code</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not send event when profile is ADMIN</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should send event to both providers</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should send event with merged dimensions</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Utils &gt;  JSONLd helper</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should inject a script tag in the page</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Utils &gt;  Storage helper</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should store data in given store</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should store data in session storage</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should store data in local storage</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Utils &gt;  UUID helper</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should return a valid UUID</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Utils &gt;  Events helper</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should debounce events</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should dispatch event and call listener</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Utils &gt;  Mobile helper</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should detect mobile</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should detect orientation</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Utils &gt;  Google place type to Font awesome icon helper</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should filter unknow icons</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should return a list of icons</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should always return an array </span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Utils &gt;  DOM helpers</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should remove css classes</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should style DOM element</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should remove all css classes when classArray is undefined</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should add css class</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should transform malformed HTML</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should transform HTML string to DOM node</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Utils &gt;  Cookies helpers</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should allow cookie</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should delete stored cookie</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should store cookie</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Utils &gt;  Security helper</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should fallback to different store</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should read token stored by create session</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should return AVS key for store</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Utils &gt;  Network helper</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should resolve promise for jsonp endpoint</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should reject promise for unknown endpoint</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should resolve promise for known endpoint</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should attach data to body</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should add custom headers to request</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should remove script injected for jsonp endpoint</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should resolve promise and parse JSON reponse</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should inject parameters in url</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">AVS video service should not</span>
+    
+      <div class="specSummary passed">
+      <span class="description">initialized when video is not found</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">initialized when vimeo is not found</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">AVS video service</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should generate sorted video sources</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should get branding</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not create session if token if exists</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not called vimeo when video is external</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should pick appropriate video resolution</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should generate video details as expected</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should linearize POIs</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create session if needed</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should generate captions</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not get branding when producer_id is not defined</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">User data service</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should fallback to navigator.geolocation</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should initialize with ipstack first</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should initialize even if currency service is inaccessible</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should initialize even if currency service is failing</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should use first element in airport list</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should execute callback immediately when serivce is ready</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Skin service </span>
+    
+      <div class="specSummary passed">
+      <span class="description">should extract css key value pair edge cases</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should extract css key value pair</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should throw error when skin has no variable</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should throw an error when skin does not exist</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not have been initialized when created</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should be able to initialize</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should ignore malformed css key value pair</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Api manager</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should fallback to default value when MAIN_SERVER variable is undefined</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should use saved token</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">(e2e) should return value stored in places cache for subsequent calls</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">(e2e) should return value stored in pois cache for subsequent calls</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite failed">
+      <span class="description">Configuration service </span>
+    
+      <div class="specSummary passed">
+      <span class="description">should return null for unknown value</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should allow modification of existing value</span>
+      </div>
+    
+      <div class="specSummary failed">
+      <span class="description">should have been initialized with env variable</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not allow object value</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Hotel tag in edit mode</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should display live data warning</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Hotel tag in view mode</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should display hotel data once fetched</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display localisation message when location service fails</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display loading while fetching data</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should call currency convertion when currencies are different</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display error when value is not a number</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not call currency convertion when currencies are identical</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display error when marker is empty</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display error when failing</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Inline video service</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should create session if needed</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not create session if token if exists</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should set single source correctly</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should normalize POIs</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should create video details</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Carousel tag in edit mode</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should not set interval</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Carousel tag in view mode</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should display photos</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display default image when no photo</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not set interval for single photo</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not display navigation for single photo</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should cycle through photos</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should change active photo</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Additional info tag</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should display rating</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not display when place fails</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Address tag</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should not display when place fails</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display address</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Static map tag</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should complete even if place call fails</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should add multiple points for tour template</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should set google map link</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should generate static map url</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not have marker if places is undefined in cfg object for tour template</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should take into account zoom level</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display default image when no marker</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Header tag</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should display header</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display icon accroding to marker types </span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not display when marker is empty</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Budget tag in view mode</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should display error when failing</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display budget for city when country is US</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display localisation message when location service fails</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display loading while fetching data</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display budget data once fetched</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Budget tag in edit mode</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should display live data warning</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Amadeus Video Player when initialized with dom node</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should have been initialized</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Amadeus Video Player when initialized with source</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should not allow editing methods when not in edit mode</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should still initiliazed with error</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should have videojs markers in seekbar</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should close open panel when play is requested</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should update POI when in edit mode</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should update POI through custom event listener</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should use brand plugin when option is present</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should add POI, seek and open panel</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should jump in time and open panel</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should properly remove POI</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should jump in time</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display rotate message when playing on portrait, mobile</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should update carousel with new pictures</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should have been initialized</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should seek to given position through custom event listener</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display tutorial</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should transition from large to small overlay</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">update POI's configuration through custom event listener</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Amadeus Video Player when initialized with a video ID</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should have been initialized</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Tour tag in edit mode</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should display live data warning</span>
+      </div>
+    
+    </div>
+  
+    <div class="suite passed">
+      <span class="description">Tour tag in view mode</span>
+    
+      <div class="specSummary passed">
+      <span class="description">should display error when value is not a number</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display tour data from configuration</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display loading while fetching data</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should call currency convertion when currencies are different</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should not call currency convertion when currencies are identical</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display error when failing</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display error when marker is empty</span>
+      </div>
+    
+      <div class="specSummary passed">
+      <span class="description">should display localisation message when location service fails</span>
+      </div>
+    
+    </div>
+  
+  
+</div>
+
+<div id="details">
+  
+  
+  <div class="specDetail failed">
+    <span class="description">Event service  should initiialize with environment data</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Expected spy initialize to have been called with [ '' ] but actual calls were [ 'UA-93593227-1' ].
+    at &lt;Jasmine&gt;
+    at UserContext.eval (webpack://AmadeusVideoPlayer/./tests/specs/scripts/events/service.spec.ts?:63:50)
+    at &lt;Jasmine&gt;</div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="specDetail failed">
+    <span class="description">Configuration service  should have been initialized with env variable</span>
+    <div class="stackTrace">
+      <div class="resultMessage">Expected 'AIzaSyD8_qWasEu_6g_KsrZ-4_atfnpFU3qab84' to equal ''.
+    at &lt;Jasmine&gt;
+    at UserContext.eval (webpack://AmadeusVideoPlayer/./tests/specs/scripts/configuration/service.spec.ts?:30:73)
+    at &lt;Jasmine&gt;,Expected 'UA-93593227-1' to equal ''.
+    at &lt;Jasmine&gt;
+    at UserContext.eval (webpack://AmadeusVideoPlayer/./tests/specs/scripts/configuration/service.spec.ts?:31:85)
+    at &lt;Jasmine&gt;,Expected '5e3b7bc9af040f6f10685212818c8eb7' to equal ''.
+    at &lt;Jasmine&gt;
+    at UserContext.eval (webpack://AmadeusVideoPlayer/./tests/specs/scripts/configuration/service.spec.ts?:32:71)
+    at &lt;Jasmine&gt;</div>
+    </div>
+  </div>
+  
+  
+</div>
+
+<script>
+
+var folded = false;
+
+document.body.onkeypress = function (e) {
+  if (!e || !e.keyCode) return;
+  switch (e.keyCode) {
+    case 102: toggleFold(); break;
+    case 49: showSummary(); break;
+    case 50: showFailures(); break;case 50: showFailures(); break;
+  }
+};
+
+function showSummary() { document.body.className = "html-reporter showSummary"; }
+function showFailures() { document.body.className = "html-reporter showDetails"; }
+
+function toggleSection(el) {
+  el.className = el.className === 'summary-section' ? 'summary-section folded' : 'summary-section';
+}
+
+function toggleFold() { (folded) ? unfold() : fold(); }
+function fold() {
+  var els = document.querySelectorAll('.summary-section');
+  for (var i = 0; i < els.length; i++) {
+    els[i].className = 'summary-section folded';
+  }
+  folded = true;
+}
+function unfold() {
+  var els = document.querySelectorAll('.summary-section');
+  for (var i = 0; i < els.length; i++) {
+    els[i].className = 'summary-section';
+  }
+  folded = false;
+}
+
+</script>
+
+
+</body>
+</html>
+

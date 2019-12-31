@@ -1,0 +1,54 @@
+  .overlay-share {
+    h1 {
+      margin: 0 0 10px 0;
+      padding: 0 0 20px 0;
+      position: relative;
+      font-size: 30px;
+
+      @include themify($themes) {
+        color: themed('emphasis');
+      }
+
+      &:after {
+        content: "";
+        height: 2.5px;
+        border-radius: 1px;
+        width: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 5px;
+        display: block;
+        position: absolute;
+
+        @include themify($themes) {
+          background: themed('emphasis');
+        }
+      }
+    }
+    .shares-wrapper {
+      height: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+      left: 0;
+      right: 0;
+      text-align: center;
+      input {
+        margin: 0 auto;
+        min-width: 50%;
+        margin: 10px;
+        border-left: 0;
+        border-top: 0;
+        border-right: 0;
+        margin: 5vh;
+        font-size: 17.5px;
+        color: rgba(0, 0, 0, 0.5);
+      }
+      .shares {
+        text-align: center;
+        .ssk:before {
+          font-size: 32px;
+        }
+      }
+    }
+  }

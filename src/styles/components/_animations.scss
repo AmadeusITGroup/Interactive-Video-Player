@@ -1,0 +1,93 @@
+@keyframes blink {
+  0% {}
+  50% {
+    background-color: transparent;
+    color: white;
+  }
+  50.01% {
+    background-color: white;
+    color: rgb(38, 118, 195);
+  }
+  65% {
+    background-color: white;
+    color: rgb(38, 118, 195);
+  }
+  65.01% {
+    background-color: transparent;
+    color: white;
+  }
+  80% {
+    background-color: transparent;
+    color: white;
+  }
+  80.01% {
+    background-color: white;
+    color: rgb(38, 118, 195);
+  }
+  95% {
+    background-color: white;
+    color: rgb(38, 118, 195);
+  }
+  95.01% {
+    background-color: transparent;
+    color: white;
+  }
+}
+
+@keyframes blinkStars {
+  0% {}
+  50% {
+    color: white;
+  }
+  50.01% {
+    color: rgb(38, 118, 195);
+  }
+  65% {
+    color: rgb(38, 118, 195);
+  }
+  65.01% {
+    color: white;
+  }
+  80% {
+    color: white;
+  }
+  80.01% {
+    color: rgb(38, 118, 195);
+  }
+  95% {
+    color: rgb(38, 118, 195);
+  }
+  95.01% {
+    color: white;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1, 2.2);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+@keyframes noise-anim {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+    }
+  }
+}
+
+@keyframes noise-anim-2 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+    }
+  }
+}
