@@ -1,0 +1,54 @@
+$xmas : (
+  text-color: #cc3333,
+
+  primary:#cc3333,
+  primary-text-color:white,
+  primary-hover:#A71919,
+  gradient-left:#800101,
+  gradient-right:#E55959,
+  gradient-direction:to right,
+
+  emphasis: #cc3333,
+
+  player-bar-bg:rgba(255, 255, 255, 0.85),
+  player-track-height:0.5em,
+  player-big-play-height: 1.5em,
+  player-marker-color: white,
+  player-active-marker-color: #8FBE30,
+  player-progress-color: #cc3333,
+  player-big-play-bg-color: #cc3333,
+  player-explore-cursor: url("https://storage.googleapis.com/travelcast/images/cross-%locale%.png%time%") 17.5 17.5,
+
+  overlay-small-dim-opacity : 1,
+
+  poi-bg:linear-gradient(to right,#A71919 10%, rgba(229, 89, 89, 0.1) 100%),
+  poi-color:white,
+  poi-text-align:left,
+  poi-text-shadow : 1px 1px 2px #800101,
+  poi-transform : rotate(-2.5deg),
+  poi-top : 44px,
+  poi-right : auto,
+  poi-bottom : auto,
+  poi-left : -10px,
+  poi-height : 40px,
+  poi-padding :  0 50px 0 65px,
+  poi-shadow-dimension : 10px,
+  poi-shadow-bg:#A71919,
+  poi-shadow-transform : rotate(2.5deg),
+  poi-icon-offset : 10px,
+
+  default-location : url(https://storage.googleapis.com/travelcast/images/deer.svg) no-repeat 50% 50%,
+
+  loading-indicator: url(https://storage.googleapis.com/travelcast/images/loading.svg),
+  loading-color: #cc3333,
+
+
+  watermark: url(https://storage.googleapis.com/travelcast/images/sata.svg) no-repeat center,
+  watermark-display : block,
+  watermark-width: 125px,
+  watermark-height: calc(125px * 0.5),
+  watermark-margin : 0,
+
+  map-marker-fill: #cc3333,
+  map-marker-stroke: #fff
+);

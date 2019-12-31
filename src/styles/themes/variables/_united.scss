@@ -1,0 +1,37 @@
+ $united : ( 
+  text-color: #666,
+
+  primary:white,
+  primary-text-color:white,
+  primary-hover:#003057,
+
+
+  gradient-left:#edb72b,
+  gradient-right:#edb72b,
+  gradient-direction: to bottom,
+  emphasis: #2172ba,
+
+  player-bar-bg: #003057,
+  player-track-height:0.5em,
+  player-big-play-height: 1.5em,
+  player-marker-color: white,
+  player-active-marker-color: #003057,
+
+  player-progress-color: #edb72b,
+  player-big-play-bg-color: #003057,
+
+  player-explore-cursor: url("https://storage.googleapis.com/travelcast/images/cross-%locale%.png%time%") 17.5 17.5,
+  overlay-small-dim-opacity: 0.75,
+  default-location: url(https://storage.googleapis.com/travelcast/images/pin-alternate.svg) no-repeat 50% 50%,
+  loading-indicator: url(https://www.united.com/ual/Format/img/logos/unitedLogo-white.png),
+  loading-color: #003057,
+
+  watermark: url(https://www.united.com/ual/Format/img/logos/unitedLogo-white.png) no-repeat center,
+
+  watermark-display: block,
+  watermark-width: 140px,
+  watermark-height: 24px,
+  watermark-margin: 0 10px 0 0,
+  map-marker-fill: #003057,
+  map-marker-stroke: #fff
+ );

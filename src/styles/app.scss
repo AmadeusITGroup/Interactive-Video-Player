@@ -1,0 +1,86 @@
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
+
+@import "./themes/_themes";
+@import "~video.js/src/css/video-js";
+@import "~social-share-kit/dist/css/social-share-kit";
+@import "~glightbox/dist/css/glightbox";
+
+
+*[data-is="avs-player"],
+.avs-test-player,
+.avs-lightbox-container {
+  .fa { font-family: "FontAwesome"; }
+
+  @import "./components/_markers";
+  @import "./components/_bootstrap";
+  @import "./components/_mixins";
+  @import "./components/_animations";
+  @import "./components/_loading";
+  @import "./components/_carousel";
+  @import "./components/_header";
+  @import "./components/_overlays";
+  @import "./components/_template";
+  @import "./components/_share";
+  @import "./components/_videojs";
+  @import "./components/_main";
+
+  font-size: 10px !important;
+
+  background: black;
+  display: block;
+  height: 100%;
+  width : 100%;
+  &.fullscreen {
+    position: fixed;
+    top : 0;
+    left : 0;
+    right : 0;
+    bottom: 0;
+  }
+}
+
+html,
+body {
+  &.avs-fullscreen,
+  &.avs-test-player {
+    background  : black !important;
+    overflow: hidden;
+    height: 100vh;
+    *[data-is="avs-player"] {
+      position: fixed !important;
+      top : 0 !important;
+      left:0 !important;
+      bottom:0 !important;
+      right : 0 !important;
+      overflow:hidden !important;
+      z-index: 2147483647;
+    }
+  }
+}
+
+.avs-lightbox-container {position:relative;}
+.video-js .vjs-big-play-button {
+  background: transparentize(#2676c3, 0.15);
+}
+.glightbox-container {
+  z-index: 2147483647 !important;
+  .gslide-inner-content {
+    padding : 15% !important;
+    .gslide-video {position: static;}
+  }
+  .lightbox-player-container {
+    padding-bottom: 56.25% !important;
+    height: 0 !important;
+    width : 100%;
+    position : relative !important;
+    *[data-is="avs-player"] {
+      position: absolute;
+      top : 0;
+      left : 0;
+      right: 0;
+      bottom : 0;
+    }
+
+  }
+}

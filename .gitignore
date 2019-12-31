@@ -1,0 +1,62 @@
+
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/tmp
+/out-tsc
+/build
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode
+.history
+.chrome
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+e2e-report
+
+# System Files
+.DS_Store
+Thumbs.db
+
+package-lock.json
+*.orig
+.chrome/
+
+# Firebase
+.firebase
+
+#Npm
+.npmrc
+
+#Documentation website
+docs
+
+#Tests and profiling
+/report
+stats.json
+coverage
+
+#Environement configs
+config/env/dev.js
+config/env/prod.js

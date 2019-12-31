@@ -1,0 +1,24 @@
+@import "./variables/_base";
+@import "./variables/_avs";
+@import "./variables/_holidaypirates";
+@import "./variables/_united";
+@import "./variables/_xmas";
+
+@import "./_themify";
+@import "./_themed";
+
+$themes: (
+  avs: map-merge($base, $avs),
+  holidaypirates: map-merge($base, $holidaypirates),
+  united:  map-merge($base, $united),
+  xmas : map-merge($base, $xmas)
+);
+
+//Overriden styles go there
+.ios avs-header .overlay-header:before {
+  display: none !important;
+}
+
+.editable .player-container {
+  overflow : hidden;
+}

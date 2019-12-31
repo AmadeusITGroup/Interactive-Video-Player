@@ -1,0 +1,138 @@
+avs-header{
+  position: absolute;
+  display: inline-block;
+  
+  cursor: default;
+  box-sizing : border-box;
+
+  @include themify($themes) {
+    z-index: themed('zoverlay');
+    transform : themed('poi-transform');
+    top: themed('poi-top'); 
+    right: themed('poi-right');
+    bottom: themed('poi-bottom');
+    left: themed('poi-left');
+    text-align: themed('poi-text-align');
+  }
+
+  &.active{bottom:30px;}
+
+  .overlay-header-blur {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    filter: blur(10px);
+  }
+
+  .overlay-header {
+   
+    background-size : 3em 3em;
+    display : inline-block;
+    position : relative;
+    transition : all 250ms ease-out;
+    display : block;
+    cursor:default;
+    background-size: 3em 3em;
+    background-position: 1em center;
+    background-repeat: no-repeat;
+    background-image: url(https://storage.googleapis.com/travelcast/images/blank.gif);
+
+    @include themify($themes) {
+      background: themed('poi-bg');
+      padding : themed('poi-padding');
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      z-index: -1;
+
+      @include themify($themes) {
+        border-top: themed('poi-shadow-dimension') solid transparent;
+        border-bottom: themed('poi-shadow-dimension') solid transparent;
+        border-right: themed('poi-shadow-dimension') solid  themed('poi-shadow-bg');
+        bottom: themed('poi-left');
+        transform: themed('poi-shadow-transform');
+      }
+    }
+
+    .fa.type {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 60px;
+      text-align: center;
+      padding-right: .25em;
+      left: 0;
+      font-size: 30px;
+      top: 0;
+      opacity: 1;
+      cursor: default;
+      border: 0;
+      line-height: 55px;
+      cursor: pointer;
+      @include themify($themes) {
+        color: themed('primary');
+        text-shadow: themed('poi-text-shadow');
+        left: themed('poi-icon-offset');
+        
+      }
+
+      &.default {
+        top : 5px;
+        bottom: 5px;
+        width : 50px;
+
+        @include themify($themes) {
+          background: themed('poi-color');
+          mask: themed('default-location');
+        }
+      }
+    }
+
+    .content-wrapper{
+      overflow : hidden;
+      white-space : nowrap;
+      position: relative;
+
+      .poi-container{
+        margin: 0;
+        padding: 0;
+        display : inline-block;
+        transition: opacity 250ms ease-in;
+
+        @include themify($themes) {
+          color: themed('poi-color');
+        }
+
+        small {font-size: 12.5px; font-weight: 200;}
+        .name, .no-data {
+          font-size: 15px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          cursor:pointer;
+          opacity:1;
+          
+          @include themify($themes) {
+            text-shadow: themed('poi-text-shadow');
+            line-height: themed('poi-height');
+          }
+        }
+
+        &:hover{
+          .name {
+            @include themify($themes) {
+              color: themed('poi-color');
+            }
+          }
+        }
+      }
+    }
+    &.disabled {
+      display:none;
+    }
+  }
+}

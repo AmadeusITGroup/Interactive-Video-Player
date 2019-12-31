@@ -1,0 +1,126 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  .video-js .vjs-resolution-button  .vjs-icon-placeholder:before{
+    font-family: VideoJS !important;
+    content: '\f110';
+    font-size: 1.8em;
+    line-height: 1.67;
+  }
+}
+
+
+.fill-height {
+  height: 100%;
+}
+
+.hidden {
+  visibility: hidden;
+  display: none;
+  opacity: 0;
+}
+
+.hyperlink {
+  @include themify($themes) {
+    color: transparentize(themed('emphasis'), .15);
+  }
+
+  cursor: pointer;
+  &:hover {
+    @include themify($themes) {
+      color: themed('emphasis');
+    }
+  }
+}
+
+.player-container {
+  position: relative;
+  margin: auto;
+  box-sizing: border-box;
+  font-size: 11px;
+  background: black;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  video {
+    visibility: hidden;
+  }
+  
+  .error-message {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: white;
+    right: 0;
+    left: 0;
+    font-size: 15px;
+    padding: 20px;
+  }
+}
+
+.loader {
+  display: block;
+  position: absolute;
+  left: 0;
+  right : 0;
+  top : 0;
+  bottom: 0;
+  overflow: hidden;
+
+  @include themify($themes) {
+    z-index: themed('zoverlay');
+  }
+
+  img {
+    width  :100%;
+    min-width: 100%; 
+  }
+}
+
+.share {
+  display: block;
+  opacity: 0.5;
+  line-height: 25px;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  top: 12.5px;
+  right: 10px;
+  font-size: 12.5px;
+  padding: 0 7.5px;
+  font-weight: 200;
+  border-radius: 5px;
+
+  @include themify($themes) {
+    color: themed('primary-text-color');;
+    z-index: themed('zoverlay');
+    background: linear-gradient(to right, themed('gradient-left') 0%, themed('gradient-right') 100%);
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.watermark {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: bottom 1s ease 0s;
+  position: relative;
+ 
+
+  @include themify($themes) {
+    display: themed('watermark-display');
+    color: themed('primary-text-color');
+    width: themed('watermark-width');
+    height: themed('watermark-height');
+    margin: themed('watermark-margin');
+    background-size: themed('watermark-width')  themed('watermark-height');
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
